@@ -41,18 +41,53 @@ body{
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
     display: flex;
     align-items: center;
+    position: relative;
+    transform: translateX(100%);
+    animation: moveleft 0.5s linear forwards;
+   
 }
+@keyframes moveleft{
+    100%{
+        transform: translateX(0);
+    }
+}
+
+
 .toast i{
     margin: 0 20px;
     font-size: 35px;
     
 }
 .fa-circle-exclamation{
-    color: rgb(139, 139, 62);
+    color: orange;
 }
 .fa-circle-xmark{
     color: red;
 }
 .fa-circle-check{
   color: green;
+}
+.toast::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: green;
+    animation: anim 5s linear forwards;
+}
+@keyframes anim{
+    100%{
+        width: 0;
+    }
+}
+.toast.successToast::after{
+    background: green;
+}
+.toast.errorToast::after{
+    background: red;
+}
+.toast.invalidToast::after{
+    background:orange;
 }
